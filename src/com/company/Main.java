@@ -14,16 +14,25 @@ public class Main {
         float annualInterstRate = (float)readNumber("Annual Interest Rate: " , 0 , 30);
         int period = (int)readNumber("Period(Years): " , 1,30);
 
-        double mortgage = calculateMortgage(priciple,annualInterstRate,period);
-        System.out.println("--MORTGAGE--");
-        System.out.println("Mortgage: " + NumberFormat.getCurrencyInstance().format(mortgage));
-        System.out.println();
+        printMortgage(priciple, annualInterstRate, period);
+        printPaymentShedule(priciple, annualInterstRate, period);
+    }
 
+    private static void printPaymentShedule(int priciple, float annualInterstRate, int period) {
         System.out.println("--REMAINING PAYMENT SHEDULE--");
-        for (int i = 0; i <= period*MONTH_IN_YEAR; i++) {
-            System.out.println("The remaining payment after paying " + i +" time is " + calculateRemainingPayment(priciple,annualInterstRate,period,i));
+        System.out.println();
+        for (int i = 1; i < period *MONTH_IN_YEAR; i++) {
+            System.out.println("The remaining payment after paying " + i +" time is " + calculateRemainingPayment(priciple, annualInterstRate, period,i));
 
         }
+    }
+
+    private static void printMortgage(int priciple, float annualInterstRate, int period) {
+        double mortgage = calculateMortgage(priciple, annualInterstRate, period);
+        System.out.println("--MORTGAGE--");
+        System.out.println();
+        System.out.println("Mortgage: " + NumberFormat.getCurrencyInstance().format(mortgage));
+        System.out.println();
     }
 
     public static double readNumber(String prompt , double min , double max){
