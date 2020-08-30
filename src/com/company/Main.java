@@ -17,14 +17,38 @@ public class Main {
         int numberOfPayments;
         double mortgage;
 
-        System.out.print("Principle: ");
-        priciple = scanner.nextInt();
+        while (true){
+            System.out.print("Principle: ");
+            priciple = scanner.nextInt();
+            if(priciple<1000 || priciple>1000000){
+                System.out.println("Enter a number between 1000 and 1000000");
+            }
+            else {
+                break;
+            }
+        }
 
-        System.out.print ("Annual Interest Rate: ");
-        annualInterstRate = scanner.nextFloat();
+        while (true){
+            System.out.print ("Annual Interest Rate: ");
+            annualInterstRate = scanner.nextFloat();
+            if(annualInterstRate<=0 || annualInterstRate>=30){
+                System.out.println("Enter a number between 0 and 30");
+            }
+            else {
+                break;
+            }
+        }
 
-        System.out.print("Period(Years): ");
-        period = scanner.nextInt();
+        while (true){
+            System.out.print("Period(Years): ");
+            period = scanner.nextInt();
+            if(annualInterstRate<=0 || annualInterstRate>30){
+                System.out.println("Enter a number between 1 and 30");
+            }
+            else {
+                break;
+            }
+        }
 
         monthlyInterestRate = annualInterstRate/(MONTH_IN_YEAR*PERCENT);
         numberOfPayments = period*12;
